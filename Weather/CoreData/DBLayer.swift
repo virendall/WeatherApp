@@ -10,14 +10,21 @@ import CoreData
 
 class DBLayer: Database {
     
+    let coreDataHelper: CoreDataHelper
+    
+    init(stack: CoreDataStack = CoreDataStack()) {
+        coreDataHelper = CoreDataHelper(managedObjectContext: stack.managedObjectContext, coreDataStack: stack)
+    }
+    
+    
     private func coreDataRecords() -> [BookMarks] {
-        return CoreDataHelper.shared.allRecords(BookMarks.self, sort: NSSortDescriptor(key: "date", ascending: false))
+        return coreDataHelper.allRecords(BookMarks.self, sort: NSSortDescriptor(key: "date", ascending: false))
     }
     
     func delete(_ bookMark: BookMarkModel) {
         if let object = coreDataRecords().filter({ $0.cityName == bookMark.cityName }).first {
-            CoreDataHelper.shared.deleteRecord(object)
-            CoreDataHelper.shared.saveDatabase()
+            coreDataHelper.deleteRecord(object)
+            coreDataHelper.saveDatabase()
         }
     }
     
@@ -29,12 +36,12 @@ class DBLayer: Database {
     }
     
     func save(_ bookMark: BookMarkModel) {
-        let dbBookMark = CoreDataHelper.shared.addRecord(BookMarks.self)
+        let dbBookMark = coreDataHelper.addRecord(BookMarks.self)
         dbBookMark.lat = bookMark.lat
         dbBookMark.lng = bookMark.lng
         dbBookMark.cityName = bookMark.cityName
         dbBookMark.date = Date()
-        CoreDataHelper.shared.saveDatabase()
+        coreDataHelper.saveDatabase()
     }
     
 }

@@ -2,11 +2,15 @@
 import Foundation
 import CoreData
 
-public class CoreDataStack {
+open class CoreDataStack {
     
+    public static let modelName = "Weather"
     
-    fileprivate static var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Weather")
+    public init() {
+    }
+    
+    public lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: CoreDataStack.modelName)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -15,11 +19,11 @@ public class CoreDataStack {
         return container
     }()
     
-    fileprivate static var saveManageObjectContext:NSManagedObjectContext = {
+    lazy var saveManageObjectContext:NSManagedObjectContext = {
         return persistentContainer.newBackgroundContext()
     }()
     
-    static var managedObjectContext: NSManagedObjectContext = {
+    public lazy var managedObjectContext: NSManagedObjectContext = {
         var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.parent = saveManageObjectContext
         return managedObjectContext
@@ -27,22 +31,22 @@ public class CoreDataStack {
     
     // MARK: - Core Data Saving support
     
-    static func saveContext() {
+    public func saveContext() {
         guard managedObjectContext.hasChanges || saveManageObjectContext.hasChanges else {
             return;
         }
-        managedObjectContext.performAndWait {
+        managedObjectContext.performAndWait {[weak self] in
             do {
-                try managedObjectContext.save()
+                try self?.managedObjectContext.save()
             } catch {
                 let nserror = error as NSError
                 print("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
         
-        saveManageObjectContext.perform {
+        saveManageObjectContext.perform {[weak self] in
             do {
-                try saveManageObjectContext.save()
+                try self?.saveManageObjectContext.save()
             } catch {
                 let nserror = error as NSError
                 print("Unresolved error \(nserror), \(nserror.userInfo)")

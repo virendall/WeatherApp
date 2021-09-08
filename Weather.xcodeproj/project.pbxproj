@@ -58,6 +58,8 @@
 		82E54A9E26E0FECD00C49671 /* SettingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E54A9D26E0FECD00C49671 /* SettingViewModelTests.swift */; };
 		82E54AA126E1007300C49671 /* SettingDBImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E54A9F26E1006E00C49671 /* SettingDBImplTests.swift */; };
 		82E54AA326E1E3BE00C49671 /* NetworkLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E54AA226E1E3BE00C49671 /* NetworkLayerTests.swift */; };
+		82E54AA626E886A300C49671 /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E54AA526E886A300C49671 /* TestCoreDataStack.swift */; };
+		82E54AA826E88C4E00C49671 /* DBLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E54AA726E88C4E00C49671 /* DBLayerTests.swift */; };
 		82FC8B4F26DE3106006193B0 /* LOGGER.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FC8B4E26DE3106006193B0 /* LOGGER.swift */; };
 		82FC8B5226DE338D006193B0 /* WeatherEndPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FC8B5126DE338D006193B0 /* WeatherEndPointTests.swift */; };
 		82FC8B5426DE354D006193B0 /* weather.json in Resources */ = {isa = PBXBuildFile; fileRef = 82FC8B5326DE354D006193B0 /* weather.json */; };
@@ -132,6 +134,8 @@
 		82E54A9D26E0FECD00C49671 /* SettingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModelTests.swift; sourceTree = "<group>"; };
 		82E54A9F26E1006E00C49671 /* SettingDBImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDBImplTests.swift; sourceTree = "<group>"; };
 		82E54AA226E1E3BE00C49671 /* NetworkLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayerTests.swift; sourceTree = "<group>"; };
+		82E54AA526E886A300C49671 /* TestCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
+		82E54AA726E88C4E00C49671 /* DBLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBLayerTests.swift; sourceTree = "<group>"; };
 		82FC8B4E26DE3106006193B0 /* LOGGER.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LOGGER.swift; sourceTree = "<group>"; };
 		82FC8B5126DE338D006193B0 /* WeatherEndPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEndPointTests.swift; sourceTree = "<group>"; };
 		82FC8B5326DE354D006193B0 /* weather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = weather.json; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 		8224157226DD45C70099A721 /* WeatherTests */ = {
 			isa = PBXGroup;
 			children = (
+				82E54AA426E8869400C49671 /* coreData */,
 				82B99CA526DE494B0069FF2B /* JSON */,
 				82FC8B5526DE357B006193B0 /* Utils */,
 				82FC8B5026DE337E006193B0 /* Network */,
@@ -406,6 +411,15 @@
 			path = CustomViews;
 			sourceTree = "<group>";
 		};
+		82E54AA426E8869400C49671 /* coreData */ = {
+			isa = PBXGroup;
+			children = (
+				82E54AA526E886A300C49671 /* TestCoreDataStack.swift */,
+				82E54AA726E88C4E00C49671 /* DBLayerTests.swift */,
+			);
+			path = coreData;
+			sourceTree = "<group>";
+		};
 		82FC8B5026DE337E006193B0 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -577,6 +591,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82FC8B5926DE3B5F006193B0 /* MockNetworkLayer.swift in Sources */,
+				82E54AA626E886A300C49671 /* TestCoreDataStack.swift in Sources */,
 				82FC8B5226DE338D006193B0 /* WeatherEndPointTests.swift in Sources */,
 				82E54AA326E1E3BE00C49671 /* NetworkLayerTests.swift in Sources */,
 				82E54AA126E1007300C49671 /* SettingDBImplTests.swift in Sources */,
@@ -586,6 +601,7 @@
 				82E54A9C26E0E20700C49671 /* BookMarkViewModelTests.swift in Sources */,
 				8224159026DD47E90099A721 /* WeatherViewModelTests.swift in Sources */,
 				82FC8B5726DE35C0006193B0 /* FileUtil.swift in Sources */,
+				82E54AA826E88C4E00C49671 /* DBLayerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

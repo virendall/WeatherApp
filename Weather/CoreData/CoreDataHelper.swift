@@ -13,12 +13,13 @@ import CoreData
 
 class CoreDataHelper {
     
-    static let shared: CoreDataHelper = CoreDataHelper()
-    
-    private let context: NSManagedObjectContext
-    
-    private init() {
-        context = CoreDataStack.managedObjectContext;
+    let context: NSManagedObjectContext
+    let coreDataStack: CoreDataStack
+
+    // MARK: - Initializers
+    public init(managedObjectContext: NSManagedObjectContext, coreDataStack: CoreDataStack) {
+      self.context = managedObjectContext
+      self.coreDataStack = coreDataStack
     }
     
     func addRecord<T: NSManagedObject>(_ type : T.Type) -> T {
@@ -48,7 +49,7 @@ class CoreDataHelper {
     }
     
     func saveDatabase() {
-        CoreDataStack.saveContext()
+        coreDataStack.saveContext()
     }
     
 }
