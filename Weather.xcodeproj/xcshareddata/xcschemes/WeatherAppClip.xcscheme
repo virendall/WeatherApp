@@ -73,7 +73,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "_XCAppClipURL"
-            value = "https://weather-appclip-demo.web.app"
+            value = "https://weather-appclip-demo.web.app?q=virender"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
